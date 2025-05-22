@@ -71,5 +71,11 @@ export interface MetricDetail {
      * @memberof MetricDetail
      */
     'region': Municipality;
+    /**
+     * Get the province name from the region.
+     * @type {string}
+     * @memberof MetricDetail
+     */
+    'province': string;
 }
 
