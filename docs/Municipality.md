@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **code** | **string** | The unique code that identifies the region. | [default to undefined]
 **name** | **string** | The name of the region. | [default to undefined]
 **alt_name** | **string** | Alternative names for the region. If there is more than one, they will be delimited by \&quot;|\&quot;. | [optional] [default to undefined]
+**province** | **string** | Get the province name from the province related model. | [readonly] [default to undefined]
 
 ## Example
 
@@ -19,6 +20,7 @@ const instance: Municipality = {
     code,
     name,
     alt_name,
+    province,
 };
 ```
 

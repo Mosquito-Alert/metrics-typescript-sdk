@@ -38,5 +38,11 @@ export interface Municipality {
      * @memberof Municipality
      */
     'alt_name'?: string | null;
+    /**
+     * Get the province name from the province related model.
+     * @type {string}
+     * @memberof Municipality
+     */
+    'province': string;
 }
 

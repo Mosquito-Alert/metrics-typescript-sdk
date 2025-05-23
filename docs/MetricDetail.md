@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **upper_value** | **number** | The predicted upper band value of the metric, from which values will be             considerated as anomalies. This value will be estimated at creation. | [optional] [default to undefined]
 **anomaly_degree** | **number** | The degree of the anomaly, a range of values that starts on -1 (a lower anomaly of the             highest degree) and ends on +1 (a upper anomaly of the highest degree). The 0 value means that             these is no anomaly. This value will be estimated at creation. | [readonly] [default to undefined]
 **region** | [**Municipality**](Municipality.md) |  | [default to undefined]
-**province** | **string** | Get the province name from the region. | [readonly] [default to undefined]
 
 ## Example
 
@@ -30,7 +29,6 @@ const instance: MetricDetail = {
     upper_value,
     anomaly_degree,
     region,
-    province,
 };
 ```
 
