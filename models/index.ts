@@ -3,6 +3,7 @@ export * from './metric';
 export * from './metric-detail';
 export * from './metric-file-request';
 export * from './metric-seasonality';
+export * from './metrics-list-ordering-parameter';
 export * from './municipality';
 export * from './paginated-metric-list';
 export * from './schema-openapi-json-retrieve-lang-parameter';

@@ -123,8 +123,9 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let dateFrom: string; //Starting date from which the results will return. (optional) (default to Fri May 23 00:00:00 UTC 2025)
-let dateTo: string; //Ending date which to the results will return. (optional) (default to Fri May 23 00:00:00 UTC 2025)
+let dateFrom: string; //Starting date from which the results will return. (optional) (default to Mon May 26 00:00:00 UTC 2025)
+let dateTo: string; //Ending date which to the results will return. (optional) (default to Mon May 26 00:00:00 UTC 2025)
+let ordering: MetricsListOrderingParameter; //Order by `date` (asc) or `-date` (desc) (optional) (default to undefined)
 let page: number; //A page number within the paginated result set. (optional) (default to undefined)
 let pageSize: number; //Number of results to return per page. (optional) (default to undefined)
 let regionCode: string; //Determines the region of the results (history). (optional) (default to 'ESP.1.1.1.1_1')
@@ -132,6 +133,7 @@ let regionCode: string; //Determines the region of the results (history). (optio
 const { status, data } = await apiInstance.list(
     dateFrom,
     dateTo,
+    ordering,
     page,
     pageSize,
     regionCode
@@ -142,8 +144,9 @@ const { status, data } = await apiInstance.list(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to Fri May 23 00:00:00 UTC 2025|
-| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to Fri May 23 00:00:00 UTC 2025|
+| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to Mon May 26 00:00:00 UTC 2025|
+| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to Mon May 26 00:00:00 UTC 2025|
+| **ordering** | **MetricsListOrderingParameter** | Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc) | (optional) defaults to undefined|
 | **page** | [**number**] | A page number within the paginated result set. | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Number of results to return per page. | (optional) defaults to undefined|
 | **regionCode** | [**string**] | Determines the region of the results (history). | (optional) defaults to 'ESP.1.1.1.1_1'|
@@ -288,7 +291,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let date: string; //Date of the results to return. (default to Fri May 23 00:00:00 UTC 2025)
+let date: string; //Date of the results to return. (default to Mon May 26 00:00:00 UTC 2025)
 let x: string; // (default to undefined)
 let y: string; // (default to undefined)
 let z: string; // (default to undefined)
@@ -305,7 +308,7 @@ const { status, data } = await apiInstance.tilesRetrieve(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date of the results to return. | defaults to Fri May 23 00:00:00 UTC 2025|
+| **date** | [**string**] | Date of the results to return. | defaults to Mon May 26 00:00:00 UTC 2025|
 | **x** | [**string**] |  | defaults to undefined|
 | **y** | [**string**] |  | defaults to undefined|
 | **z** | [**string**] |  | defaults to undefined|

@@ -32,6 +32,8 @@ import type { MetricFileRequest } from '../models';
 // @ts-ignore
 import type { MetricSeasonality } from '../models';
 // @ts-ignore
+import type { MetricsListOrderingParameter } from '../models';
+// @ts-ignore
 import type { PaginatedMetricList } from '../models';
 /**
  * MetricsApi - axios parameter creator
@@ -113,13 +115,14 @@ export const MetricsApiAxiosParamCreator = function (configuration?: Configurati
          * ViewSet for Metric model.
          * @param {string} [dateFrom] Starting date from which the results will return.
          * @param {string} [dateTo] Ending date which to the results will return.
+         * @param {MetricsListOrderingParameter} [ordering] Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc)
          * @param {number} [page] A page number within the paginated result set.
          * @param {number} [pageSize] Number of results to return per page.
          * @param {string} [regionCode] Determines the region of the results (history).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        list: async (dateFrom?: string, dateTo?: string, page?: number, pageSize?: number, regionCode?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        list: async (dateFrom?: string, dateTo?: string, ordering?: MetricsListOrderingParameter, page?: number, pageSize?: number, regionCode?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/metrics/`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -145,6 +148,10 @@ export const MetricsApiAxiosParamCreator = function (configuration?: Configurati
                 localVarQueryParameter['date_to'] = (dateTo as any instanceof Date) ?
                     (dateTo as any).toISOString().substring(0,10) :
                     dateTo;
+            }
+
+            if (ordering !== undefined) {
+                localVarQueryParameter['ordering'] = ordering;
             }
 
             if (page !== undefined) {
@@ -332,14 +339,15 @@ export const MetricsApiFp = function(configuration?: Configuration) {
          * ViewSet for Metric model.
          * @param {string} [dateFrom] Starting date from which the results will return.
          * @param {string} [dateTo] Ending date which to the results will return.
+         * @param {MetricsListOrderingParameter} [ordering] Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc)
          * @param {number} [page] A page number within the paginated result set.
          * @param {number} [pageSize] Number of results to return per page.
          * @param {string} [regionCode] Determines the region of the results (history).
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async list(dateFrom?: string, dateTo?: string, page?: number, pageSize?: number, regionCode?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedMetricList>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.list(dateFrom, dateTo, page, pageSize, regionCode, options);
+        async list(dateFrom?: string, dateTo?: string, ordering?: MetricsListOrderingParameter, page?: number, pageSize?: number, regionCode?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<PaginatedMetricList>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.list(dateFrom, dateTo, ordering, page, pageSize, regionCode, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['MetricsApi.list']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -417,7 +425,7 @@ export const MetricsApiFactory = function (configuration?: Configuration, basePa
          * @throws {RequiredError}
          */
         list(requestParameters: MetricsApiListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMetricList> {
-            return localVarFp.list(requestParameters.dateFrom, requestParameters.dateTo, requestParameters.page, requestParameters.pageSize, requestParameters.regionCode, options).then((request) => request(axios, basePath));
+            return localVarFp.list(requestParameters.dateFrom, requestParameters.dateTo, requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionCode, options).then((request) => request(axios, basePath));
         },
         /**
          * ViewSet for Metric model.
@@ -482,6 +490,13 @@ export interface MetricsApiListRequest {
      * @memberof MetricsApiList
      */
     readonly dateTo?: string
+
+    /**
+     * Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc)
+     * @type {MetricsListOrderingParameter}
+     * @memberof MetricsApiList
+     */
+    readonly ordering?: MetricsListOrderingParameter
 
     /**
      * A page number within the paginated result set.
@@ -604,7 +619,7 @@ export class MetricsApi extends BaseAPI {
      * @memberof MetricsApi
      */
     public list(requestParameters: MetricsApiListRequest = {}, options?: RawAxiosRequestConfig) {
-        return MetricsApiFp(this.configuration).list(requestParameters.dateFrom, requestParameters.dateTo, requestParameters.page, requestParameters.pageSize, requestParameters.regionCode, options).then((request) => request(this.axios, this.basePath));
+        return MetricsApiFp(this.configuration).list(requestParameters.dateFrom, requestParameters.dateTo, requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionCode, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
