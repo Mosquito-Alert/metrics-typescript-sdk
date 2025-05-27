@@ -15,6 +15,7 @@ docs/Metric.md
 docs/MetricDetail.md
 docs/MetricFileRequest.md
 docs/MetricSeasonality.md
+docs/MetricTrend.md
 docs/MetricsApi.md
 docs/MetricsListOrderingParameter.md
 docs/Municipality.md
@@ -29,6 +30,7 @@ models/last-metric-date.ts
 models/metric-detail.ts
 models/metric-file-request.ts
 models/metric-seasonality.ts
+models/metric-trend.ts
 models/metric.ts
 models/metrics-list-ordering-parameter.ts
 models/municipality.ts

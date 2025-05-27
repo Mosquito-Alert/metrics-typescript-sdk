@@ -15,16 +15,16 @@
 
 
 /**
- * Serializer for the Metric Seasonality associated to the Predictor model.
+ * Serializer for the Metric Trend associated to the Predictor model.
  * @export
- * @interface MetricSeasonality
+ * @interface MetricTrend
  */
-export interface MetricSeasonality {
+export interface MetricTrend {
     /**
      * 
      * @type {Array<any>}
-     * @memberof MetricSeasonality
+     * @memberof MetricTrend
      */
-    'yearly': Array<any>;
+    'trend': Array<any>;
 }
 

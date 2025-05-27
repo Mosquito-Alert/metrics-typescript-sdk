@@ -32,6 +32,8 @@ import type { MetricFileRequest } from '../models';
 // @ts-ignore
 import type { MetricSeasonality } from '../models';
 // @ts-ignore
+import type { MetricTrend } from '../models';
+// @ts-ignore
 import type { MetricsListOrderingParameter } from '../models';
 // @ts-ignore
 import type { PaginatedMetricList } from '../models';
@@ -302,6 +304,42 @@ export const MetricsApiAxiosParamCreator = function (configuration?: Configurati
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * Action that returns the trend of a specific metric.
+         * @param {string} id A UUID string identifying this Metric.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        trendRetrieve: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('trendRetrieve', 'id', id)
+            const localVarPath = `/metrics/{id}/trend/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication tokenAuth required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -391,6 +429,18 @@ export const MetricsApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['MetricsApi.tilesRetrieve']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * Action that returns the trend of a specific metric.
+         * @param {string} id A UUID string identifying this Metric.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async trendRetrieve(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MetricTrend>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.trendRetrieve(id, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MetricsApi.trendRetrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -453,6 +503,15 @@ export const MetricsApiFactory = function (configuration?: Configuration, basePa
          */
         tilesRetrieve(requestParameters: MetricsApiTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Metric> {
             return localVarFp.tilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Action that returns the trend of a specific metric.
+         * @param {MetricsApiTrendRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        trendRetrieve(requestParameters: MetricsApiTrendRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<MetricTrend> {
+            return localVarFp.trendRetrieve(requestParameters.id, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -584,6 +643,20 @@ export interface MetricsApiTilesRetrieveRequest {
 }
 
 /**
+ * Request parameters for trendRetrieve operation in MetricsApi.
+ * @export
+ * @interface MetricsApiTrendRetrieveRequest
+ */
+export interface MetricsApiTrendRetrieveRequest {
+    /**
+     * A UUID string identifying this Metric.
+     * @type {string}
+     * @memberof MetricsApiTrendRetrieve
+     */
+    readonly id: string
+}
+
+/**
  * MetricsApi - object-oriented interface
  * @export
  * @class MetricsApi
@@ -653,6 +726,17 @@ export class MetricsApi extends BaseAPI {
      */
     public tilesRetrieve(requestParameters: MetricsApiTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
         return MetricsApiFp(this.configuration).tilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Action that returns the trend of a specific metric.
+     * @param {MetricsApiTrendRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetricsApi
+     */
+    public trendRetrieve(requestParameters: MetricsApiTrendRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return MetricsApiFp(this.configuration).trendRetrieve(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

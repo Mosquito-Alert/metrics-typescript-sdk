@@ -1,20 +1,20 @@
-# MetricSeasonality
+# MetricTrend
 
-Serializer for the Metric Seasonality associated to the Predictor model.
+Serializer for the Metric Trend associated to the Predictor model.
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**yearly** | **Array&lt;any&gt;** |  | [default to undefined]
+**trend** | **Array&lt;any&gt;** |  | [default to undefined]
 
 ## Example
 
 ```typescript
-import { MetricSeasonality } from 'anomaly-detection';
+import { MetricTrend } from 'anomaly-detection';
 
-const instance: MetricSeasonality = {
-    yearly,
+const instance: MetricTrend = {
+    trend,
 };
 ```
 

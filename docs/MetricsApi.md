@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost:8000/api/v1*
 |[**retrieve**](#retrieve) | **GET** /metrics/{id}/ | |
 |[**seasonalityRetrieve**](#seasonalityretrieve) | **GET** /metrics/{id}/seasonality/ | |
 |[**tilesRetrieve**](#tilesretrieve) | **GET** /metrics/tiles/{z}/{x}/{y}/ | |
+|[**trendRetrieve**](#trendretrieve) | **GET** /metrics/{id}/trend/ | |
 
 # **batchCreate**
 > batchCreate(metricFileRequest)
@@ -123,8 +124,8 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let dateFrom: string; //Starting date from which the results will return. (optional) (default to Mon May 26 00:00:00 UTC 2025)
-let dateTo: string; //Ending date which to the results will return. (optional) (default to Mon May 26 00:00:00 UTC 2025)
+let dateFrom: string; //Starting date from which the results will return. (optional) (default to Tue May 27 00:00:00 UTC 2025)
+let dateTo: string; //Ending date which to the results will return. (optional) (default to Tue May 27 00:00:00 UTC 2025)
 let ordering: MetricsListOrderingParameter; //Order by `date` (asc) or `-date` (desc) (optional) (default to undefined)
 let page: number; //A page number within the paginated result set. (optional) (default to undefined)
 let pageSize: number; //Number of results to return per page. (optional) (default to undefined)
@@ -144,8 +145,8 @@ const { status, data } = await apiInstance.list(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to Mon May 26 00:00:00 UTC 2025|
-| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to Mon May 26 00:00:00 UTC 2025|
+| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to Tue May 27 00:00:00 UTC 2025|
+| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to Tue May 27 00:00:00 UTC 2025|
 | **ordering** | **MetricsListOrderingParameter** | Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc) | (optional) defaults to undefined|
 | **page** | [**number**] | A page number within the paginated result set. | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Number of results to return per page. | (optional) defaults to undefined|
@@ -291,7 +292,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let date: string; //Date of the results to return. (default to Mon May 26 00:00:00 UTC 2025)
+let date: string; //Date of the results to return. (default to Tue May 27 00:00:00 UTC 2025)
 let x: string; // (default to undefined)
 let y: string; // (default to undefined)
 let z: string; // (default to undefined)
@@ -308,7 +309,7 @@ const { status, data } = await apiInstance.tilesRetrieve(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date of the results to return. | defaults to Mon May 26 00:00:00 UTC 2025|
+| **date** | [**string**] | Date of the results to return. | defaults to Tue May 27 00:00:00 UTC 2025|
 | **x** | [**string**] |  | defaults to undefined|
 | **y** | [**string**] |  | defaults to undefined|
 | **z** | [**string**] |  | defaults to undefined|
@@ -326,6 +327,57 @@ const { status, data } = await apiInstance.tilesRetrieve(
 
  - **Content-Type**: Not defined
  - **Accept**: application/vnd.mapbox-vector-tile
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **trendRetrieve**
+> MetricTrend trendRetrieve()
+
+Action that returns the trend of a specific metric.
+
+### Example
+
+```typescript
+import {
+    MetricsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new MetricsApi(configuration);
+
+let id: string; //A UUID string identifying this Metric. (default to undefined)
+
+const { status, data } = await apiInstance.trendRetrieve(
+    id
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**string**] | A UUID string identifying this Metric. | defaults to undefined|
+
+
+### Return type
+
+**MetricTrend**
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 
 ### HTTP response details
