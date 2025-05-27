@@ -6,6 +6,7 @@ Serializer for the Metric Trend associated to the Predictor model.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**date** | **string** |  | [default to undefined]
 **trend** | **Array&lt;any&gt;** |  | [default to undefined]
 
 ## Example
@@ -14,6 +15,7 @@ Name | Type | Description | Notes
 import { MetricTrend } from 'anomaly-detection';
 
 const instance: MetricTrend = {
+    date,
     trend,
 };
 ```

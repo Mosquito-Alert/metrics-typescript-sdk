@@ -22,6 +22,12 @@
 export interface MetricTrend {
     /**
      * 
+     * @type {string}
+     * @memberof MetricTrend
+     */
+    'date': string;
+    /**
+     * 
      * @type {Array<any>}
      * @memberof MetricTrend
      */
