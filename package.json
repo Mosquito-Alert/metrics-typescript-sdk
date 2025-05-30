@@ -1,6 +1,6 @@
 {
   "name": "anomaly-detection",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "OpenAPI client for anomaly-detection",
   "author": "OpenAPI-Generator Contributors",
   "repository": {

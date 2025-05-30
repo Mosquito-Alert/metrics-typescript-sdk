@@ -14,7 +14,7 @@
 
 
 
-export * from './api/geo-api';
 export * from './api/metrics-api';
+export * from './api/regions-api';
 export * from './api/schema-api';
 

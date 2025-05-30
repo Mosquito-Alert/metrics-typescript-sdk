@@ -1,4 +1,4 @@
-## anomaly-detection@0.0.6
+## anomaly-detection@0.0.7
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install anomaly-detection@0.0.6 --save
+npm install anomaly-detection@0.0.7 --save
 ```
 
 _unPublished (not recommended):_
@@ -51,7 +51,6 @@ All URIs are relative to *http://localhost:8000/api/v1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*GeoApi* | [**tilesRetrieve**](docs/GeoApi.md#tilesretrieve) | **GET** /geo/tiles/{z}/{x}/{y} | 
 *MetricsApi* | [**batchCreate**](docs/MetricsApi.md#batchcreate) | **POST** /metrics/batch/ | 
 *MetricsApi* | [**lastDateRetrieve**](docs/MetricsApi.md#lastdateretrieve) | **GET** /metrics/dates/last/ | 
 *MetricsApi* | [**list**](docs/MetricsApi.md#list) | **GET** /metrics/ | 
@@ -59,6 +58,8 @@ Class | Method | HTTP request | Description
 *MetricsApi* | [**seasonalityRetrieve**](docs/MetricsApi.md#seasonalityretrieve) | **GET** /metrics/{id}/seasonality/ | 
 *MetricsApi* | [**tilesRetrieve**](docs/MetricsApi.md#tilesretrieve) | **GET** /metrics/tiles/{z}/{x}/{y}/ | 
 *MetricsApi* | [**trendRetrieve**](docs/MetricsApi.md#trendretrieve) | **GET** /metrics/{id}/trend/ | 
+*RegionsApi* | [**list**](docs/RegionsApi.md#list) | **GET** /regions/ | 
+*RegionsApi* | [**tilesRetrieve**](docs/RegionsApi.md#tilesretrieve) | **GET** /regions/tiles/{z}/{x}/{y}/ | 
 *SchemaApi* | [**openapiJsonRetrieve**](docs/SchemaApi.md#openapijsonretrieve) | **GET** /schema/openapi.json | 
 *SchemaApi* | [**openapiYmlRetrieve**](docs/SchemaApi.md#openapiymlretrieve) | **GET** /schema/openapi.yml | 
 
@@ -74,6 +75,8 @@ Class | Method | HTTP request | Description
  - [MetricsListOrderingParameter](docs/MetricsListOrderingParameter.md)
  - [Municipality](docs/Municipality.md)
  - [PaginatedMetricList](docs/PaginatedMetricList.md)
+ - [PaginatedMunicipalityList](docs/PaginatedMunicipalityList.md)
+ - [RegionsListOrderingParameter](docs/RegionsListOrderingParameter.md)
  - [SchemaOpenapiJsonRetrieveLangParameter](docs/SchemaOpenapiJsonRetrieveLangParameter.md)
  - [SchemaOpenapiYmlRetrieveFormatParameter](docs/SchemaOpenapiYmlRetrieveFormatParameter.md)
 

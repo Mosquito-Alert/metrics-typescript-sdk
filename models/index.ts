@@ -7,5 +7,7 @@ export * from './metric-trend';
 export * from './metrics-list-ordering-parameter';
 export * from './municipality';
 export * from './paginated-metric-list';
+export * from './paginated-municipality-list';
+export * from './regions-list-ordering-parameter';
 export * from './schema-openapi-json-retrieve-lang-parameter';
 export * from './schema-openapi-yml-retrieve-format-parameter';
