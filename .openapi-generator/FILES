@@ -18,6 +18,11 @@ docs/MetricTrend.md
 docs/MetricsApi.md
 docs/MetricsListOrderingParameter.md
 docs/Municipality.md
+docs/MunicipalityRetrieve.md
+docs/MunicipalityRetrieveGeometry.md
+docs/MunicipalityRetrieveGeometryType.md
+docs/MunicipalityRetrieveProperties.md
+docs/MunicipalityRetrieveType.md
 docs/PaginatedMetricList.md
 docs/PaginatedMunicipalityList.md
 docs/RegionsApi.md
@@ -35,6 +40,11 @@ models/metric-seasonality.ts
 models/metric-trend.ts
 models/metric.ts
 models/metrics-list-ordering-parameter.ts
+models/municipality-retrieve-geometry-type.ts
+models/municipality-retrieve-geometry.ts
+models/municipality-retrieve-properties.ts
+models/municipality-retrieve-type.ts
+models/municipality-retrieve.ts
 models/municipality.ts
 models/paginated-metric-list.ts
 models/paginated-municipality-list.ts

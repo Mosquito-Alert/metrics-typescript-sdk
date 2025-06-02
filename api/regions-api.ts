@@ -24,6 +24,8 @@ import { BASE_PATH, COLLECTION_FORMATS, type RequestArgs, BaseAPI, RequiredError
 // @ts-ignore
 import type { Municipality } from '../models';
 // @ts-ignore
+import type { MunicipalityRetrieve } from '../models';
+// @ts-ignore
 import type { PaginatedMunicipalityList } from '../models';
 // @ts-ignore
 import type { RegionsListOrderingParameter } from '../models';
@@ -88,11 +90,10 @@ export const RegionsApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {number} id A unique integer value identifying this Municipality.
-         * @param {boolean} [geometry] Geometry.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieve: async (id: number, geometry?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        retrieve: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('retrieve', 'id', id)
             const localVarPath = `/regions/{id}/`
@@ -110,10 +111,6 @@ export const RegionsApiAxiosParamCreator = function (configuration?: Configurati
 
             // authentication tokenAuth required
             await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
-
-            if (geometry !== undefined) {
-                localVarQueryParameter['geometry'] = geometry;
-            }
 
 
     
@@ -198,12 +195,11 @@ export const RegionsApiFp = function(configuration?: Configuration) {
         /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {number} id A unique integer value identifying this Municipality.
-         * @param {boolean} [geometry] Geometry.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async retrieve(id: number, geometry?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Municipality>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, geometry, options);
+        async retrieve(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<MunicipalityRetrieve>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RegionsApi.retrieve']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -247,8 +243,8 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        retrieve(requestParameters: RegionsApiRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Municipality> {
-            return localVarFp.retrieve(requestParameters.id, requestParameters.geometry, options).then((request) => request(axios, basePath));
+        retrieve(requestParameters: RegionsApiRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<MunicipalityRetrieve> {
+            return localVarFp.retrieve(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
          * Action that returns the tiles of a specified area and zoom
@@ -309,13 +305,6 @@ export interface RegionsApiRetrieveRequest {
      * @memberof RegionsApiRetrieve
      */
     readonly id: number
-
-    /**
-     * Geometry.
-     * @type {boolean}
-     * @memberof RegionsApiRetrieve
-     */
-    readonly geometry?: boolean
 }
 
 /**
@@ -372,7 +361,7 @@ export class RegionsApi extends BaseAPI {
      * @memberof RegionsApi
      */
     public retrieve(requestParameters: RegionsApiRetrieveRequest, options?: RawAxiosRequestConfig) {
-        return RegionsApiFp(this.configuration).retrieve(requestParameters.id, requestParameters.geometry, options).then((request) => request(this.axios, this.basePath));
+        return RegionsApiFp(this.configuration).retrieve(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

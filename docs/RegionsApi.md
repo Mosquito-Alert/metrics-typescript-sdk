@@ -69,7 +69,7 @@ const { status, data } = await apiInstance.list(
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **retrieve**
-> Municipality retrieve()
+> MunicipalityRetrieve retrieve()
 
 ViewSet for the Municipality model with MVT rendering.
 
@@ -85,11 +85,9 @@ const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
 
 let id: number; //A unique integer value identifying this Municipality. (default to undefined)
-let geometry: boolean; //Geometry. (optional) (default to false)
 
 const { status, data } = await apiInstance.retrieve(
-    id,
-    geometry
+    id
 );
 ```
 
@@ -98,12 +96,11 @@ const { status, data } = await apiInstance.retrieve(
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
 | **id** | [**number**] | A unique integer value identifying this Municipality. | defaults to undefined|
-| **geometry** | [**boolean**] | Geometry. | (optional) defaults to false|
 
 
 ### Return type
 
-**Municipality**
+**MunicipalityRetrieve**
 
 ### Authorization
 

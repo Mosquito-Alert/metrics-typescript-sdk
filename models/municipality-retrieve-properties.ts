@@ -15,40 +15,34 @@
 
 
 /**
- * Serializer for the Municipality model.
+ * 
  * @export
- * @interface Municipality
+ * @interface MunicipalityRetrieveProperties
  */
-export interface Municipality {
-    /**
-     * 
-     * @type {number}
-     * @memberof Municipality
-     */
-    'id': number;
+export interface MunicipalityRetrieveProperties {
     /**
      * The unique code that identifies the region.
      * @type {string}
-     * @memberof Municipality
+     * @memberof MunicipalityRetrieveProperties
      */
-    'code': string;
+    'code'?: string;
     /**
      * The name of the region.
      * @type {string}
-     * @memberof Municipality
+     * @memberof MunicipalityRetrieveProperties
      */
-    'name': string;
+    'name'?: string;
     /**
      * Alternative names for the region. If there is more than one, they will be delimited by \"|\".
      * @type {string}
-     * @memberof Municipality
+     * @memberof MunicipalityRetrieveProperties
      */
     'alt_name'?: string | null;
     /**
      * Get the province name from the province related model.
      * @type {string}
-     * @memberof Municipality
+     * @memberof MunicipalityRetrieveProperties
      */
-    'province': string;
+    'province'?: string;
 }
 
