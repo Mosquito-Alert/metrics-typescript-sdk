@@ -86,6 +86,47 @@ export const RegionsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * ViewSet for the Municipality model with MVT rendering.
+         * @param {number} id A unique integer value identifying this Municipality.
+         * @param {boolean} [geometry] Geometry.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieve: async (id: number, geometry?: boolean, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'id' is not null or undefined
+            assertParamExists('retrieve', 'id', id)
+            const localVarPath = `/regions/{id}/`
+                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication tokenAuth required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+            if (geometry !== undefined) {
+                localVarQueryParameter['geometry'] = geometry;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Action that returns the tiles of a specified area and zoom
          * @param {string} x 
          * @param {string} y 
@@ -155,6 +196,19 @@ export const RegionsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * ViewSet for the Municipality model with MVT rendering.
+         * @param {number} id A unique integer value identifying this Municipality.
+         * @param {boolean} [geometry] Geometry.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async retrieve(id: number, geometry?: boolean, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Municipality>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.retrieve(id, geometry, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RegionsApi.retrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Action that returns the tiles of a specified area and zoom
          * @param {string} x 
          * @param {string} y 
@@ -186,6 +240,15 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
          */
         list(requestParameters: RegionsApiListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMunicipalityList> {
             return localVarFp.list(requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * ViewSet for the Municipality model with MVT rendering.
+         * @param {RegionsApiRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        retrieve(requestParameters: RegionsApiRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Municipality> {
+            return localVarFp.retrieve(requestParameters.id, requestParameters.geometry, options).then((request) => request(axios, basePath));
         },
         /**
          * Action that returns the tiles of a specified area and zoom
@@ -235,6 +298,27 @@ export interface RegionsApiListRequest {
 }
 
 /**
+ * Request parameters for retrieve operation in RegionsApi.
+ * @export
+ * @interface RegionsApiRetrieveRequest
+ */
+export interface RegionsApiRetrieveRequest {
+    /**
+     * A unique integer value identifying this Municipality.
+     * @type {number}
+     * @memberof RegionsApiRetrieve
+     */
+    readonly id: number
+
+    /**
+     * Geometry.
+     * @type {boolean}
+     * @memberof RegionsApiRetrieve
+     */
+    readonly geometry?: boolean
+}
+
+/**
  * Request parameters for tilesRetrieve operation in RegionsApi.
  * @export
  * @interface RegionsApiTilesRetrieveRequest
@@ -278,6 +362,17 @@ export class RegionsApi extends BaseAPI {
      */
     public list(requestParameters: RegionsApiListRequest = {}, options?: RawAxiosRequestConfig) {
         return RegionsApiFp(this.configuration).list(requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * ViewSet for the Municipality model with MVT rendering.
+     * @param {RegionsApiRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    public retrieve(requestParameters: RegionsApiRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return RegionsApiFp(this.configuration).retrieve(requestParameters.id, requestParameters.geometry, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

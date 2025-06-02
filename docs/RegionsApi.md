@@ -5,6 +5,7 @@ All URIs are relative to *http://localhost:8000/api/v1*
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
 |[**list**](#list) | **GET** /regions/ | |
+|[**retrieve**](#retrieve) | **GET** /regions/{id}/ | |
 |[**tilesRetrieve**](#tilesretrieve) | **GET** /regions/tiles/{z}/{x}/{y}/ | |
 
 # **list**
@@ -49,6 +50,60 @@ const { status, data } = await apiInstance.list(
 ### Return type
 
 **PaginatedMunicipalityList**
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **retrieve**
+> Municipality retrieve()
+
+ViewSet for the Municipality model with MVT rendering.
+
+### Example
+
+```typescript
+import {
+    RegionsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new RegionsApi(configuration);
+
+let id: number; //A unique integer value identifying this Municipality. (default to undefined)
+let geometry: boolean; //Geometry. (optional) (default to false)
+
+const { status, data } = await apiInstance.retrieve(
+    id,
+    geometry
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **id** | [**number**] | A unique integer value identifying this Municipality. | defaults to undefined|
+| **geometry** | [**boolean**] | Geometry. | (optional) defaults to false|
+
+
+### Return type
+
+**Municipality**
 
 ### Authorization
 

@@ -1,4 +1,4 @@
-## anomaly-detection@0.0.7
+## anomaly-detection@0.0.9
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install anomaly-detection@0.0.7 --save
+npm install anomaly-detection@0.0.9 --save
 ```
 
 _unPublished (not recommended):_
@@ -59,6 +59,7 @@ Class | Method | HTTP request | Description
 *MetricsApi* | [**tilesRetrieve**](docs/MetricsApi.md#tilesretrieve) | **GET** /metrics/tiles/{z}/{x}/{y}/ | 
 *MetricsApi* | [**trendRetrieve**](docs/MetricsApi.md#trendretrieve) | **GET** /metrics/{id}/trend/ | 
 *RegionsApi* | [**list**](docs/RegionsApi.md#list) | **GET** /regions/ | 
+*RegionsApi* | [**retrieve**](docs/RegionsApi.md#retrieve) | **GET** /regions/{id}/ | 
 *RegionsApi* | [**tilesRetrieve**](docs/RegionsApi.md#tilesretrieve) | **GET** /regions/tiles/{z}/{x}/{y}/ | 
 *SchemaApi* | [**openapiJsonRetrieve**](docs/SchemaApi.md#openapijsonretrieve) | **GET** /schema/openapi.json | 
 *SchemaApi* | [**openapiYmlRetrieve**](docs/SchemaApi.md#openapiymlretrieve) | **GET** /schema/openapi.yml | 

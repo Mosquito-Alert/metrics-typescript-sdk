@@ -21,6 +21,12 @@
  */
 export interface Municipality {
     /**
+     * 
+     * @type {number}
+     * @memberof Municipality
+     */
+    'id': number;
+    /**
      * The unique code that identifies the region.
      * @type {string}
      * @memberof Municipality
@@ -44,5 +50,11 @@ export interface Municipality {
      * @memberof Municipality
      */
     'province': string;
+    /**
+     * Geometry of the region.
+     * @type {string}
+     * @memberof Municipality
+     */
+    'geometry': string | null;
 }
 
