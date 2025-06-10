@@ -1,6 +1,6 @@
 # MetricsApi
 
-All URIs are relative to *https://metrics.mosquitoalert.com/api/v1*
+All URIs are relative to *http://localhost:8000/api/v1*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
@@ -93,7 +93,7 @@ This endpoint does not have any parameters.
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -124,12 +124,12 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let dateFrom: string; //Starting date from which the results will return. (optional) (default to Wed Jun 04 00:00:00 UTC 2025)
-let dateTo: string; //Ending date which to the results will return. (optional) (default to Wed Jun 04 00:00:00 UTC 2025)
+let dateFrom: string; //Starting date from which the results will return. (optional) (default to undefined)
+let dateTo: string; //Ending date which to the results will return. (optional) (default to undefined)
 let ordering: MetricsListOrderingParameter; //Order by `date` (asc) or `-date` (desc) (optional) (default to undefined)
 let page: number; //A page number within the paginated result set. (optional) (default to undefined)
 let pageSize: number; //Number of results to return per page. (optional) (default to undefined)
-let regionCode: string; //Determines the region of the results (history). (optional) (default to 'ESP.1.1.1.1_1')
+let regionCode: string; //Determines the region of the results (history). (optional) (default to undefined)
 
 const { status, data } = await apiInstance.list(
     dateFrom,
@@ -145,12 +145,12 @@ const { status, data } = await apiInstance.list(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to Wed Jun 04 00:00:00 UTC 2025|
-| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to Wed Jun 04 00:00:00 UTC 2025|
+| **dateFrom** | [**string**] | Starting date from which the results will return. | (optional) defaults to undefined|
+| **dateTo** | [**string**] | Ending date which to the results will return. | (optional) defaults to undefined|
 | **ordering** | **MetricsListOrderingParameter** | Order by &#x60;date&#x60; (asc) or &#x60;-date&#x60; (desc) | (optional) defaults to undefined|
 | **page** | [**number**] | A page number within the paginated result set. | (optional) defaults to undefined|
 | **pageSize** | [**number**] | Number of results to return per page. | (optional) defaults to undefined|
-| **regionCode** | [**string**] | Determines the region of the results (history). | (optional) defaults to 'ESP.1.1.1.1_1'|
+| **regionCode** | [**string**] | Determines the region of the results (history). | (optional) defaults to undefined|
 
 
 ### Return type
@@ -159,7 +159,7 @@ const { status, data } = await apiInstance.list(
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -210,7 +210,7 @@ const { status, data } = await apiInstance.retrieve(
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -261,7 +261,7 @@ const { status, data } = await apiInstance.seasonalityRetrieve(
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -292,7 +292,7 @@ import {
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
 
-let date: string; //Date of the results to return. (default to Wed Jun 04 00:00:00 UTC 2025)
+let date: string; //Date of the results to return. (default to undefined)
 let x: string; // (default to undefined)
 let y: string; // (default to undefined)
 let z: string; // (default to undefined)
@@ -309,7 +309,7 @@ const { status, data } = await apiInstance.tilesRetrieve(
 
 |Name | Type | Description  | Notes|
 |------------- | ------------- | ------------- | -------------|
-| **date** | [**string**] | Date of the results to return. | defaults to Wed Jun 04 00:00:00 UTC 2025|
+| **date** | [**string**] | Date of the results to return. | defaults to undefined|
 | **x** | [**string**] |  | defaults to undefined|
 | **y** | [**string**] |  | defaults to undefined|
 | **z** | [**string**] |  | defaults to undefined|
@@ -321,7 +321,7 @@ const { status, data } = await apiInstance.tilesRetrieve(
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 
@@ -372,7 +372,7 @@ const { status, data } = await apiInstance.trendRetrieve(
 
 ### Authorization
 
-[tokenAuth](../README.md#tokenAuth)
+No authorization required
 
 ### HTTP request headers
 

@@ -36,6 +36,50 @@ import type { RegionsListOrderingParameter } from '../models';
 export const RegionsApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
+         * Action that returns the tiles of a specified autonomous community and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        autonomousCommunitiesTilesRetrieve: async (x: string, y: string, z: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x' is not null or undefined
+            assertParamExists('autonomousCommunitiesTilesRetrieve', 'x', x)
+            // verify required parameter 'y' is not null or undefined
+            assertParamExists('autonomousCommunitiesTilesRetrieve', 'y', y)
+            // verify required parameter 'z' is not null or undefined
+            assertParamExists('autonomousCommunitiesTilesRetrieve', 'z', z)
+            const localVarPath = `/regions/autonomous_communities/tiles/{z}/{x}/{y}/`
+                .replace(`{${"x"}}`, encodeURIComponent(String(x)))
+                .replace(`{${"y"}}`, encodeURIComponent(String(y)))
+                .replace(`{${"z"}}`, encodeURIComponent(String(z)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication tokenAuth required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {RegionsListOrderingParameter} [ordering] Order by &#x60;code&#x60;, &#x60;name&#x60; or &#x60;province&#x60;.
          * @param {number} [page] A page number within the paginated result set.
@@ -88,6 +132,94 @@ export const RegionsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Action that returns the tiles of a specified municipality and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        municipalitiesTilesRetrieve: async (x: string, y: string, z: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x' is not null or undefined
+            assertParamExists('municipalitiesTilesRetrieve', 'x', x)
+            // verify required parameter 'y' is not null or undefined
+            assertParamExists('municipalitiesTilesRetrieve', 'y', y)
+            // verify required parameter 'z' is not null or undefined
+            assertParamExists('municipalitiesTilesRetrieve', 'z', z)
+            const localVarPath = `/regions/municipalities/tiles/{z}/{x}/{y}/`
+                .replace(`{${"x"}}`, encodeURIComponent(String(x)))
+                .replace(`{${"y"}}`, encodeURIComponent(String(y)))
+                .replace(`{${"z"}}`, encodeURIComponent(String(z)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication tokenAuth required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * Action that returns the tiles of a specified province and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        provincesTilesRetrieve: async (x: string, y: string, z: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'x' is not null or undefined
+            assertParamExists('provincesTilesRetrieve', 'x', x)
+            // verify required parameter 'y' is not null or undefined
+            assertParamExists('provincesTilesRetrieve', 'y', y)
+            // verify required parameter 'z' is not null or undefined
+            assertParamExists('provincesTilesRetrieve', 'z', z)
+            const localVarPath = `/regions/provinces/tiles/{z}/{x}/{y}/`
+                .replace(`{${"x"}}`, encodeURIComponent(String(x)))
+                .replace(`{${"y"}}`, encodeURIComponent(String(y)))
+                .replace(`{${"z"}}`, encodeURIComponent(String(z)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication tokenAuth required
+            await setApiKeyToObject(localVarHeaderParameter, "Authorization", configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {number} id A unique integer value identifying this Municipality.
          * @param {*} [options] Override http request option.
@@ -124,7 +256,7 @@ export const RegionsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
-         * Action that returns the tiles of a specified area and zoom
+         * Action that returns the tiles of a specified region and zoom. This endpoint is dynamic, so it will return the tiles for a municipality, province, or autonomous community based on the zoom level.
          * @param {string} x 
          * @param {string} y 
          * @param {string} z 
@@ -178,6 +310,20 @@ export const RegionsApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = RegionsApiAxiosParamCreator(configuration)
     return {
         /**
+         * Action that returns the tiles of a specified autonomous community and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async autonomousCommunitiesTilesRetrieve(x: string, y: string, z: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Municipality>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.autonomousCommunitiesTilesRetrieve(x, y, z, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RegionsApi.autonomousCommunitiesTilesRetrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {RegionsListOrderingParameter} [ordering] Order by &#x60;code&#x60;, &#x60;name&#x60; or &#x60;province&#x60;.
          * @param {number} [page] A page number within the paginated result set.
@@ -193,6 +339,34 @@ export const RegionsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Action that returns the tiles of a specified municipality and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async municipalitiesTilesRetrieve(x: string, y: string, z: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Municipality>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.municipalitiesTilesRetrieve(x, y, z, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RegionsApi.municipalitiesTilesRetrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * Action that returns the tiles of a specified province and zoom
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async provincesTilesRetrieve(x: string, y: string, z: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Municipality>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.provincesTilesRetrieve(x, y, z, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RegionsApi.provincesTilesRetrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {number} id A unique integer value identifying this Municipality.
          * @param {*} [options] Override http request option.
@@ -205,7 +379,7 @@ export const RegionsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * Action that returns the tiles of a specified area and zoom
+         * Action that returns the tiles of a specified region and zoom. This endpoint is dynamic, so it will return the tiles for a municipality, province, or autonomous community based on the zoom level.
          * @param {string} x 
          * @param {string} y 
          * @param {string} z 
@@ -229,6 +403,15 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
     const localVarFp = RegionsApiFp(configuration)
     return {
         /**
+         * Action that returns the tiles of a specified autonomous community and zoom
+         * @param {RegionsApiAutonomousCommunitiesTilesRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        autonomousCommunitiesTilesRetrieve(requestParameters: RegionsApiAutonomousCommunitiesTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Municipality> {
+            return localVarFp.autonomousCommunitiesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(axios, basePath));
+        },
+        /**
          * ViewSet for the Municipality model with MVT rendering.
          * @param {RegionsApiListRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
@@ -236,6 +419,24 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
          */
         list(requestParameters: RegionsApiListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<PaginatedMunicipalityList> {
             return localVarFp.list(requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionName, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Action that returns the tiles of a specified municipality and zoom
+         * @param {RegionsApiMunicipalitiesTilesRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        municipalitiesTilesRetrieve(requestParameters: RegionsApiMunicipalitiesTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Municipality> {
+            return localVarFp.municipalitiesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * Action that returns the tiles of a specified province and zoom
+         * @param {RegionsApiProvincesTilesRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        provincesTilesRetrieve(requestParameters: RegionsApiProvincesTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Municipality> {
+            return localVarFp.provincesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(axios, basePath));
         },
         /**
          * ViewSet for the Municipality model with MVT rendering.
@@ -247,7 +448,7 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.retrieve(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
-         * Action that returns the tiles of a specified area and zoom
+         * Action that returns the tiles of a specified region and zoom. This endpoint is dynamic, so it will return the tiles for a municipality, province, or autonomous community based on the zoom level.
          * @param {RegionsApiTilesRetrieveRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -257,6 +458,34 @@ export const RegionsApiFactory = function (configuration?: Configuration, basePa
         },
     };
 };
+
+/**
+ * Request parameters for autonomousCommunitiesTilesRetrieve operation in RegionsApi.
+ * @export
+ * @interface RegionsApiAutonomousCommunitiesTilesRetrieveRequest
+ */
+export interface RegionsApiAutonomousCommunitiesTilesRetrieveRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiAutonomousCommunitiesTilesRetrieve
+     */
+    readonly x: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiAutonomousCommunitiesTilesRetrieve
+     */
+    readonly y: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiAutonomousCommunitiesTilesRetrieve
+     */
+    readonly z: string
+}
 
 /**
  * Request parameters for list operation in RegionsApi.
@@ -291,6 +520,62 @@ export interface RegionsApiListRequest {
      * @memberof RegionsApiList
      */
     readonly regionName?: string
+}
+
+/**
+ * Request parameters for municipalitiesTilesRetrieve operation in RegionsApi.
+ * @export
+ * @interface RegionsApiMunicipalitiesTilesRetrieveRequest
+ */
+export interface RegionsApiMunicipalitiesTilesRetrieveRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiMunicipalitiesTilesRetrieve
+     */
+    readonly x: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiMunicipalitiesTilesRetrieve
+     */
+    readonly y: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiMunicipalitiesTilesRetrieve
+     */
+    readonly z: string
+}
+
+/**
+ * Request parameters for provincesTilesRetrieve operation in RegionsApi.
+ * @export
+ * @interface RegionsApiProvincesTilesRetrieveRequest
+ */
+export interface RegionsApiProvincesTilesRetrieveRequest {
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiProvincesTilesRetrieve
+     */
+    readonly x: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiProvincesTilesRetrieve
+     */
+    readonly y: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof RegionsApiProvincesTilesRetrieve
+     */
+    readonly z: string
 }
 
 /**
@@ -343,6 +628,17 @@ export interface RegionsApiTilesRetrieveRequest {
  */
 export class RegionsApi extends BaseAPI {
     /**
+     * Action that returns the tiles of a specified autonomous community and zoom
+     * @param {RegionsApiAutonomousCommunitiesTilesRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    public autonomousCommunitiesTilesRetrieve(requestParameters: RegionsApiAutonomousCommunitiesTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return RegionsApiFp(this.configuration).autonomousCommunitiesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * ViewSet for the Municipality model with MVT rendering.
      * @param {RegionsApiListRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -351,6 +647,28 @@ export class RegionsApi extends BaseAPI {
      */
     public list(requestParameters: RegionsApiListRequest = {}, options?: RawAxiosRequestConfig) {
         return RegionsApiFp(this.configuration).list(requestParameters.ordering, requestParameters.page, requestParameters.pageSize, requestParameters.regionName, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Action that returns the tiles of a specified municipality and zoom
+     * @param {RegionsApiMunicipalitiesTilesRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    public municipalitiesTilesRetrieve(requestParameters: RegionsApiMunicipalitiesTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return RegionsApiFp(this.configuration).municipalitiesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Action that returns the tiles of a specified province and zoom
+     * @param {RegionsApiProvincesTilesRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RegionsApi
+     */
+    public provincesTilesRetrieve(requestParameters: RegionsApiProvincesTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return RegionsApiFp(this.configuration).provincesTilesRetrieve(requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -365,7 +683,7 @@ export class RegionsApi extends BaseAPI {
     }
 
     /**
-     * Action that returns the tiles of a specified area and zoom
+     * Action that returns the tiles of a specified region and zoom. This endpoint is dynamic, so it will return the tiles for a municipality, province, or autonomous community based on the zoom level.
      * @param {RegionsApiTilesRetrieveRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}

@@ -1,12 +1,72 @@
 # RegionsApi
 
-All URIs are relative to *https://metrics.mosquitoalert.com/api/v1*
+All URIs are relative to *http://localhost:8000/api/v1*
 
 |Method | HTTP request | Description|
 |------------- | ------------- | -------------|
+|[**autonomousCommunitiesTilesRetrieve**](#autonomouscommunitiestilesretrieve) | **GET** /regions/autonomous_communities/tiles/{z}/{x}/{y}/ | |
 |[**list**](#list) | **GET** /regions/ | |
+|[**municipalitiesTilesRetrieve**](#municipalitiestilesretrieve) | **GET** /regions/municipalities/tiles/{z}/{x}/{y}/ | |
+|[**provincesTilesRetrieve**](#provincestilesretrieve) | **GET** /regions/provinces/tiles/{z}/{x}/{y}/ | |
 |[**retrieve**](#retrieve) | **GET** /regions/{id}/ | |
 |[**tilesRetrieve**](#tilesretrieve) | **GET** /regions/tiles/{z}/{x}/{y}/ | |
+
+# **autonomousCommunitiesTilesRetrieve**
+> Municipality autonomousCommunitiesTilesRetrieve()
+
+Action that returns the tiles of a specified autonomous community and zoom
+
+### Example
+
+```typescript
+import {
+    RegionsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new RegionsApi(configuration);
+
+let x: string; // (default to undefined)
+let y: string; // (default to undefined)
+let z: string; // (default to undefined)
+
+const { status, data } = await apiInstance.autonomousCommunitiesTilesRetrieve(
+    x,
+    y,
+    z
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **x** | [**string**] |  | defaults to undefined|
+| **y** | [**string**] |  | defaults to undefined|
+| **z** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**Municipality**
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.mapbox-vector-tile
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **list**
 > PaginatedMunicipalityList list()
@@ -59,6 +119,120 @@ const { status, data } = await apiInstance.list(
 
  - **Content-Type**: Not defined
  - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **municipalitiesTilesRetrieve**
+> Municipality municipalitiesTilesRetrieve()
+
+Action that returns the tiles of a specified municipality and zoom
+
+### Example
+
+```typescript
+import {
+    RegionsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new RegionsApi(configuration);
+
+let x: string; // (default to undefined)
+let y: string; // (default to undefined)
+let z: string; // (default to undefined)
+
+const { status, data } = await apiInstance.municipalitiesTilesRetrieve(
+    x,
+    y,
+    z
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **x** | [**string**] |  | defaults to undefined|
+| **y** | [**string**] |  | defaults to undefined|
+| **z** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**Municipality**
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.mapbox-vector-tile
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **provincesTilesRetrieve**
+> Municipality provincesTilesRetrieve()
+
+Action that returns the tiles of a specified province and zoom
+
+### Example
+
+```typescript
+import {
+    RegionsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new RegionsApi(configuration);
+
+let x: string; // (default to undefined)
+let y: string; // (default to undefined)
+let z: string; // (default to undefined)
+
+const { status, data } = await apiInstance.provincesTilesRetrieve(
+    x,
+    y,
+    z
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **x** | [**string**] |  | defaults to undefined|
+| **y** | [**string**] |  | defaults to undefined|
+| **z** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**Municipality**
+
+### Authorization
+
+[tokenAuth](../README.md#tokenAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.mapbox-vector-tile
 
 
 ### HTTP response details
@@ -122,7 +296,7 @@ const { status, data } = await apiInstance.retrieve(
 # **tilesRetrieve**
 > Municipality tilesRetrieve()
 
-Action that returns the tiles of a specified area and zoom
+Action that returns the tiles of a specified region and zoom. This endpoint is dynamic, so it will return the tiles for a municipality, province, or autonomous community based on the zoom level.
 
 ### Example
 
