@@ -10,6 +10,7 @@ All URIs are relative to *http://localhost:8000/api/v1*
 |[**retrieve**](#retrieve) | **GET** /metrics/{id}/ | |
 |[**seasonalityRetrieve**](#seasonalityretrieve) | **GET** /metrics/{id}/seasonality/ | |
 |[**tilesRetrieve**](#tilesretrieve) | **GET** /metrics/tiles/{z}/{x}/{y}/ | |
+|[**timeseriesTilesRetrieve**](#timeseriestilesretrieve) | **GET** /metrics/timeseries/tiles/{z}/{x}/{y}/ | |
 |[**trendRetrieve**](#trendretrieve) | **GET** /metrics/{id}/trend/ | |
 
 # **batchCreate**
@@ -313,6 +314,69 @@ const { status, data } = await apiInstance.tilesRetrieve(
 | **x** | [**string**] |  | defaults to undefined|
 | **y** | [**string**] |  | defaults to undefined|
 | **z** | [**string**] |  | defaults to undefined|
+
+
+### Return type
+
+**Metric**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/vnd.mapbox-vector-tile
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+|**200** |  |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **timeseriesTilesRetrieve**
+> Metric timeseriesTilesRetrieve()
+
+ViewSet for Metric model.
+
+### Example
+
+```typescript
+import {
+    MetricsApi,
+    Configuration
+} from 'anomaly-detection';
+
+const configuration = new Configuration();
+const apiInstance = new MetricsApi(configuration);
+
+let date: string; //Date of the results to return. (default to undefined)
+let x: string; // (default to undefined)
+let y: string; // (default to undefined)
+let z: string; // (default to undefined)
+let days: number; //Number of days to return in the time series. (optional) (default to undefined)
+
+const { status, data } = await apiInstance.timeseriesTilesRetrieve(
+    date,
+    x,
+    y,
+    z,
+    days
+);
+```
+
+### Parameters
+
+|Name | Type | Description  | Notes|
+|------------- | ------------- | ------------- | -------------|
+| **date** | [**string**] | Date of the results to return. | defaults to undefined|
+| **x** | [**string**] |  | defaults to undefined|
+| **y** | [**string**] |  | defaults to undefined|
+| **z** | [**string**] |  | defaults to undefined|
+| **days** | [**number**] | Number of days to return in the time series. | (optional) defaults to undefined|
 
 
 ### Return type

@@ -290,6 +290,61 @@ export const MetricsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * ViewSet for Metric model.
+         * @param {string} date Date of the results to return.
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {number} [days] Number of days to return in the time series.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        timeseriesTilesRetrieve: async (date: string, x: string, y: string, z: string, days?: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'date' is not null or undefined
+            assertParamExists('timeseriesTilesRetrieve', 'date', date)
+            // verify required parameter 'x' is not null or undefined
+            assertParamExists('timeseriesTilesRetrieve', 'x', x)
+            // verify required parameter 'y' is not null or undefined
+            assertParamExists('timeseriesTilesRetrieve', 'y', y)
+            // verify required parameter 'z' is not null or undefined
+            assertParamExists('timeseriesTilesRetrieve', 'z', z)
+            const localVarPath = `/metrics/timeseries/tiles/{z}/{x}/{y}/`
+                .replace(`{${"x"}}`, encodeURIComponent(String(x)))
+                .replace(`{${"y"}}`, encodeURIComponent(String(y)))
+                .replace(`{${"z"}}`, encodeURIComponent(String(z)));
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (date !== undefined) {
+                localVarQueryParameter['date'] = (date as any instanceof Date) ?
+                    (date as any).toISOString().substring(0,10) :
+                    date;
+            }
+
+            if (days !== undefined) {
+                localVarQueryParameter['days'] = days;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Action that returns the trend of a specific metric.
          * @param {string} id A UUID string identifying this Metric.
          * @param {*} [options] Override http request option.
@@ -412,6 +467,22 @@ export const MetricsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * ViewSet for Metric model.
+         * @param {string} date Date of the results to return.
+         * @param {string} x 
+         * @param {string} y 
+         * @param {string} z 
+         * @param {number} [days] Number of days to return in the time series.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async timeseriesTilesRetrieve(date: string, x: string, y: string, z: string, days?: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Metric>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.timeseriesTilesRetrieve(date, x, y, z, days, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MetricsApi.timeseriesTilesRetrieve']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Action that returns the trend of a specific metric.
          * @param {string} id A UUID string identifying this Metric.
          * @param {*} [options] Override http request option.
@@ -485,6 +556,15 @@ export const MetricsApiFactory = function (configuration?: Configuration, basePa
          */
         tilesRetrieve(requestParameters: MetricsApiTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Metric> {
             return localVarFp.tilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * ViewSet for Metric model.
+         * @param {MetricsApiTimeseriesTilesRetrieveRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        timeseriesTilesRetrieve(requestParameters: MetricsApiTimeseriesTilesRetrieveRequest, options?: RawAxiosRequestConfig): AxiosPromise<Metric> {
+            return localVarFp.timeseriesTilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, requestParameters.days, options).then((request) => request(axios, basePath));
         },
         /**
          * Action that returns the trend of a specific metric.
@@ -625,6 +705,48 @@ export interface MetricsApiTilesRetrieveRequest {
 }
 
 /**
+ * Request parameters for timeseriesTilesRetrieve operation in MetricsApi.
+ * @export
+ * @interface MetricsApiTimeseriesTilesRetrieveRequest
+ */
+export interface MetricsApiTimeseriesTilesRetrieveRequest {
+    /**
+     * Date of the results to return.
+     * @type {string}
+     * @memberof MetricsApiTimeseriesTilesRetrieve
+     */
+    readonly date: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof MetricsApiTimeseriesTilesRetrieve
+     */
+    readonly x: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof MetricsApiTimeseriesTilesRetrieve
+     */
+    readonly y: string
+
+    /**
+     * 
+     * @type {string}
+     * @memberof MetricsApiTimeseriesTilesRetrieve
+     */
+    readonly z: string
+
+    /**
+     * Number of days to return in the time series.
+     * @type {number}
+     * @memberof MetricsApiTimeseriesTilesRetrieve
+     */
+    readonly days?: number
+}
+
+/**
  * Request parameters for trendRetrieve operation in MetricsApi.
  * @export
  * @interface MetricsApiTrendRetrieveRequest
@@ -708,6 +830,17 @@ export class MetricsApi extends BaseAPI {
      */
     public tilesRetrieve(requestParameters: MetricsApiTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
         return MetricsApiFp(this.configuration).tilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * ViewSet for Metric model.
+     * @param {MetricsApiTimeseriesTilesRetrieveRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetricsApi
+     */
+    public timeseriesTilesRetrieve(requestParameters: MetricsApiTimeseriesTilesRetrieveRequest, options?: RawAxiosRequestConfig) {
+        return MetricsApiFp(this.configuration).timeseriesTilesRetrieve(requestParameters.date, requestParameters.x, requestParameters.y, requestParameters.z, requestParameters.days, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
