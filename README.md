@@ -1,4 +1,4 @@
-## anomaly-detection@0.1.18-BETA
+## anomaly-detection@0.1.19-BETA
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install anomaly-detection@0.1.18-BETA --save
+npm install anomaly-detection@0.1.19-BETA --save
 ```
 
 _unPublished (not recommended):_
@@ -52,6 +52,7 @@ All URIs are relative to *http://localhost:8000/api/v1*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *MetricsApi* | [**batchCreate**](docs/MetricsApi.md#batchcreate) | **POST** /metrics/batch/ | 
+*MetricsApi* | [**datesList**](docs/MetricsApi.md#dateslist) | **GET** /metrics/dates/ | 
 *MetricsApi* | [**lastDateRetrieve**](docs/MetricsApi.md#lastdateretrieve) | **GET** /metrics/dates/last/ | 
 *MetricsApi* | [**list**](docs/MetricsApi.md#list) | **GET** /metrics/ | 
 *MetricsApi* | [**retrieve**](docs/MetricsApi.md#retrieve) | **GET** /metrics/{id}/ | 
@@ -67,6 +68,7 @@ Class | Method | HTTP request | Description
 *RegionsApi* | [**tilesRetrieve**](docs/RegionsApi.md#tilesretrieve) | **GET** /regions/tiles/{z}/{x}/{y}/ | 
 *SchemaApi* | [**openapiJsonRetrieve**](docs/SchemaApi.md#openapijsonretrieve) | **GET** /schema/openapi.json | 
 *SchemaApi* | [**openapiYmlRetrieve**](docs/SchemaApi.md#openapiymlretrieve) | **GET** /schema/openapi.yml | 
+*TimeseriesJsonApi* | [**jsonRetrieve**](docs/TimeseriesJsonApi.md#jsonretrieve) | **GET** /timeseries-json/ | 
 
 
 ### Documentation For Models

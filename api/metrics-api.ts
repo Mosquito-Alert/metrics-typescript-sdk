@@ -82,6 +82,40 @@ export const MetricsApiAxiosParamCreator = function (configuration?: Configurati
             };
         },
         /**
+         * Action that returns the all the dates in which there are metrics available.
+         * @param {string} [ordering] Which field to use when ordering the results.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        datesList: async (ordering?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/metrics/dates/`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            if (ordering !== undefined) {
+                localVarQueryParameter['ordering'] = ordering;
+            }
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
          * Action that returns the last date in which there are metrics available.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -400,6 +434,18 @@ export const MetricsApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
+         * Action that returns the all the dates in which there are metrics available.
+         * @param {string} [ordering] Which field to use when ordering the results.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async datesList(ordering?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<Array<LastMetricDate>>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.datesList(ordering, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['MetricsApi.datesList']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
          * Action that returns the last date in which there are metrics available.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -514,6 +560,15 @@ export const MetricsApiFactory = function (configuration?: Configuration, basePa
             return localVarFp.batchCreate(requestParameters.metricFileRequest, options).then((request) => request(axios, basePath));
         },
         /**
+         * Action that returns the all the dates in which there are metrics available.
+         * @param {MetricsApiDatesListRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        datesList(requestParameters: MetricsApiDatesListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<Array<LastMetricDate>> {
+            return localVarFp.datesList(requestParameters.ordering, options).then((request) => request(axios, basePath));
+        },
+        /**
          * Action that returns the last date in which there are metrics available.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -590,6 +645,20 @@ export interface MetricsApiBatchCreateRequest {
      * @memberof MetricsApiBatchCreate
      */
     readonly metricFileRequest: MetricFileRequest
+}
+
+/**
+ * Request parameters for datesList operation in MetricsApi.
+ * @export
+ * @interface MetricsApiDatesListRequest
+ */
+export interface MetricsApiDatesListRequest {
+    /**
+     * Which field to use when ordering the results.
+     * @type {string}
+     * @memberof MetricsApiDatesList
+     */
+    readonly ordering?: string
 }
 
 /**
@@ -776,6 +845,17 @@ export class MetricsApi extends BaseAPI {
      */
     public batchCreate(requestParameters: MetricsApiBatchCreateRequest, options?: RawAxiosRequestConfig) {
         return MetricsApiFp(this.configuration).batchCreate(requestParameters.metricFileRequest, options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * Action that returns the all the dates in which there are metrics available.
+     * @param {MetricsApiDatesListRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof MetricsApi
+     */
+    public datesList(requestParameters: MetricsApiDatesListRequest = {}, options?: RawAxiosRequestConfig) {
+        return MetricsApiFp(this.configuration).datesList(requestParameters.ordering, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

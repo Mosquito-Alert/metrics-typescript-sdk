@@ -17,4 +17,5 @@
 export * from './api/metrics-api';
 export * from './api/regions-api';
 export * from './api/schema-api';
+export * from './api/timeseries-json-api';
 

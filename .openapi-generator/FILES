@@ -6,6 +6,7 @@ api.ts
 api/metrics-api.ts
 api/regions-api.ts
 api/schema-api.ts
+api/timeseries-json-api.ts
 base.ts
 common.ts
 configuration.ts
@@ -30,6 +31,7 @@ docs/RegionsListOrderingParameter.md
 docs/SchemaApi.md
 docs/SchemaOpenapiJsonRetrieveLangParameter.md
 docs/SchemaOpenapiYmlRetrieveFormatParameter.md
+docs/TimeseriesJsonApi.md
 git_push.sh
 index.ts
 models/index.ts
