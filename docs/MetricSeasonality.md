@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MetricSeasonality } from 'anomaly-detection';
+import { MetricSeasonality } from 'metrics';
 
 const instance: MetricSeasonality = {
     yearly,

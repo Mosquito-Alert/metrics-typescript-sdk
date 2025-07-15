@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MetricDetail } from 'anomaly-detection';
+import { MetricDetail } from 'metrics';
 
 const instance: MetricDetail = {
     id,

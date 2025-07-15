@@ -18,7 +18,7 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.  -
 import {
     SchemaApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new SchemaApi(configuration);
@@ -69,7 +69,7 @@ OpenApi3 schema for this API. Format can be selected via content negotiation.  -
 import {
     SchemaApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new SchemaApi(configuration);

@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MetricFileRequest } from 'anomaly-detection';
+import { MetricFileRequest } from 'metrics';
 
 const instance: MetricFileRequest = {
     file,

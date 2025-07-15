@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PaginatedMetricList } from 'anomaly-detection';
+import { PaginatedMetricList } from 'metrics';
 
 const instance: PaginatedMetricList = {
     count,

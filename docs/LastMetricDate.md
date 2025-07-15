@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { LastMetricDate } from 'anomaly-detection';
+import { LastMetricDate } from 'metrics';
 
 const instance: LastMetricDate = {
     date,

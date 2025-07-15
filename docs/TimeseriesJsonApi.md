@@ -16,7 +16,7 @@ All URIs are relative to *http://localhost:8000/api/v1*
 import {
     TimeseriesJsonApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new TimeseriesJsonApi(configuration);

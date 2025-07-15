@@ -26,7 +26,7 @@ import {
     MetricsApi,
     Configuration,
     MetricFileRequest
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -77,7 +77,7 @@ Action that returns the all the dates in which there are metrics available.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -128,7 +128,7 @@ Action that returns the last date in which there are metrics available.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -172,7 +172,7 @@ ViewSet for Metric model.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -238,7 +238,7 @@ ViewSet for Metric model.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -289,7 +289,7 @@ Action that returns the seasonality of a specific metric.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -340,7 +340,7 @@ Action that returns the tiles of a specified area and zoom
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -400,7 +400,7 @@ ViewSet for Metric model.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);
@@ -463,7 +463,7 @@ Action that returns the trend of a specific metric.
 import {
     MetricsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new MetricsApi(configuration);

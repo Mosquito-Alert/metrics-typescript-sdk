@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MunicipalityRetrieveGeometry } from 'anomaly-detection';
+import { MunicipalityRetrieveGeometry } from 'metrics';
 
 const instance: MunicipalityRetrieveGeometry = {
     type,

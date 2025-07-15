@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MetricTrend } from 'anomaly-detection';
+import { MetricTrend } from 'metrics';
 
 const instance: MetricTrend = {
     date,

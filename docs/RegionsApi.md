@@ -22,7 +22,7 @@ Action that returns the tiles of a specified autonomous community and zoom
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
@@ -79,7 +79,7 @@ ViewSet for the Municipality model with MVT rendering.
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
@@ -139,7 +139,7 @@ Action that returns the tiles of a specified municipality and zoom
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
@@ -196,7 +196,7 @@ Action that returns the tiles of a specified province and zoom
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
@@ -253,7 +253,7 @@ ViewSet for the Municipality model with MVT rendering.
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);
@@ -304,7 +304,7 @@ Action that returns the tiles of a specified region and zoom. This endpoint is d
 import {
     RegionsApi,
     Configuration
-} from 'anomaly-detection';
+} from 'metrics';
 
 const configuration = new Configuration();
 const apiInstance = new RegionsApi(configuration);

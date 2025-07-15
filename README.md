@@ -1,4 +1,4 @@
-## anomaly-detection@0.1.19-BETA
+## metrics@0.1.19-BETA
 
 This generator creates TypeScript/JavaScript client that utilizes [axios](https://github.com/axios/axios). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install anomaly-detection@0.1.19-BETA --save
+npm install metrics@0.1.19-BETA --save
 ```
 
 _unPublished (not recommended):_

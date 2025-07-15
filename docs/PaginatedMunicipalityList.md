@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { PaginatedMunicipalityList } from 'anomaly-detection';
+import { PaginatedMunicipalityList } from 'metrics';
 
 const instance: PaginatedMunicipalityList = {
     count,

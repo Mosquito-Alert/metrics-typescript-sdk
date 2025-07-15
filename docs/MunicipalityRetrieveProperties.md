@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 ## Example
 
 ```typescript
-import { MunicipalityRetrieveProperties } from 'anomaly-detection';
+import { MunicipalityRetrieveProperties } from 'metrics';
 
 const instance: MunicipalityRetrieveProperties = {
     code,
