@@ -1,8 +1,8 @@
 /* tslint:disable */
 /* eslint-disable */
 /**
- * Bites Anomaly Detection API
- * API for the Bites Anomaly Detection project
+ * Metrics API
+ * API for the Metrics of the Mosquito Alert project
  *
  * The version of the OpenAPI document: 1.0.0 (v1)
  * 
